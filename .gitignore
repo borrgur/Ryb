@@ -1,0 +1,5 @@
+# exclude bin and obj
+/supermarket/bin
+/supermarket/obj
+/stringsearcher/bin
+/stringsearcher/obj
