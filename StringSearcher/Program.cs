@@ -11,7 +11,7 @@ namespace StringSearcher
         static void Main(string[] args)
         {
             var arrayLoader = new ArrayLoader();
-            Dictionary<string, string> data = arrayLoader.readData("./data.txt");
+            Dictionary<string, List<string>> data = arrayLoader.readData("./data.txt");
             for (;;)
             {
                 Console.Write("Enter 5-letters-long string ");
@@ -30,7 +30,13 @@ namespace StringSearcher
                 string sortedStr = StringSorter.sortedString(str);
                 if (data.ContainsKey(sortedStr))
                 {
-                    Console.WriteLine("String {0} found as {1}", str, data[sortedStr]);
+                    Console.Write("String {0} matched to strings: ", str);
+                    foreach (string s in data[sortedStr])
+                    {
+                        Console.Write("{0} ", s);
+                    }
+
+                    Console.WriteLine();
                 }
                 else
                 {

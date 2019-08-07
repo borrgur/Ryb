@@ -10,18 +10,20 @@ namespace StringSearcher
 {
     class ArrayLoader
     {
-        public Dictionary<string, string> readData(string fileName)
+        public Dictionary<string, List<string>> readData(string fileName)
         {
             string line;
-            Dictionary<string, string> res = new Dictionary<string, string>();
+            Dictionary<string, List<string>> res = new Dictionary<string, List<string>>();
             StreamReader file = new StreamReader(fileName);
             while ((line = file.ReadLine()) != null)
             {
                 string sortedLine = StringSorter.sortedString(line);
                 if (!res.ContainsKey(sortedLine))
                 {
-                    res.Add(sortedLine, line);
+                    res.Add(sortedLine, new List<string>());
                 }
+
+                res[sortedLine].Add(line);
             }
 
             file.Close();
